@@ -5,8 +5,6 @@ import requests
 import numpy as np
 import mlflow
 from p7_functions import mean_zero, mean_un, mean_data
-import pickle
-import shap
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 # data = pd.read_csv(r'Data/data_test_ohe.csv', index_col='SK_ID_CURR')
@@ -19,8 +17,6 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 # model = mlflow.sklearn.load_model('mlflow_model_final_lgbm_test')
 # data_cli = pd.DataFrame(data.loc[100002, :]).T.drop(columns='TARGET')
 # pred = model.predict(data_cli)[0]
-
-shap_values = pickle.load(open('shape_values.pickle', 'rb'))
 
 
 data = pd.read_csv(r'Data/data_test_ohe.csv', index_col='SK_ID_CURR')
@@ -115,21 +111,6 @@ def main():
             data_cli_T.loc[col]
         )
 
-    st.write(
-        '## Explication du modèle'
-    )
-
-    nb_var = st.slider(
-        'Nombre de variables',
-        1,
-        133,
-        10
-    )
-
-    st.pyplot(
-        shap.plots.waterfall(shap_values[ind], max_display=nb_var)
-    )
-           
 
         # st.write(f'Score : {pred:.2f}')
         # st.write(f'{pred}')
