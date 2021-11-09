@@ -19,7 +19,7 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 # pred = model.predict(data_cli)[0]
 
 
-data = pd.read_csv(r'Data/data_test_ohe.csv', index_col='SK_ID_CURR')
+data = pd.read_csv(r'data_test_ohe.csv', index_col='SK_ID_CURR')
 data.drop(columns='Unnamed: 0', inplace=True)
 index_list = data.index.to_list()
 
